@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { initialContacts } from "./initialState";
-import { getContactsThunk, addContactsThunk, deleteContactThunk } from "./thunk";
+import { getContactsThunk, addContactsThunk, deleteContactThunk } from "../thunk";
 import {
   fn,
   handleFulfilled,

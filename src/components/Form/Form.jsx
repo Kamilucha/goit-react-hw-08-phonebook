@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selector';
+import { getContacts } from 'redux/contacts/selector';
 import { addContactsThunk } from 'redux/thunk';
 import { Input, Label, FormContainer, Button } from "./Form.styled"
 
