@@ -5,7 +5,6 @@ import { addContactsThunk } from 'redux/thunk';
 import { Input, Label, FormContainer, Button } from "./Form.styled"
 
 
-
 const Form = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -40,8 +39,9 @@ const Form = () => {
     );
 
     if (duplicate) {
-      return alert (`${name} is already in contacts`);
+        return alert (`${name} is already in contacts`);
     }
+  
 
         const newContact = {
                 name,

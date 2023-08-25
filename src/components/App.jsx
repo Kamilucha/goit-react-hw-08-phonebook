@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import { Loader } from './Loader/Loader';
 
 // import { Home } from '../pages/Home'
 
@@ -23,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader/>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
