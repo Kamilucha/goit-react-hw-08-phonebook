@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Contacts } from 'components/Contacts/Contacts';
 import { getIsLoading } from 'redux/contacts/selector';
-import { fetchContacts } from 'api/contactsAPI';
 import { Filter } from 'components/Filter/Filter';
+import { getContactsThunk } from 'redux/thunk';
+import { Loader } from 'components/Loader/Loader';
 import Form from 'components/Form/Form';
 
 export default function ContactsPage() {
@@ -12,20 +13,20 @@ export default function ContactsPage() {
   const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
-    fetchContacts().then(data => {
-    dispatch(data)
-  })
+   dispatch (getContactsThunk())
   }, [dispatch]);
 
   return (
     <>
       <Form />
+      <HelmetProvider>
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      <div>{isLoading && 'Request in progress...'}</div>
+      </HelmetProvider>
       <Filter/>
       <Contacts />
+      {isLoading && <Loader/>}
     </>
   );
 }
