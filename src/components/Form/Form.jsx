@@ -10,9 +10,6 @@ const Form = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
-    // const nameInputId = shortid.generate();
-    // const telInputId = shortid.generate();
-
     const dispatch = useDispatch();
     const contacts = useSelector(getContacts);
 
@@ -35,8 +32,6 @@ const Form = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        // onSubmit({ name, number })
 
         const duplicate = contacts.some(
       contact =>

@@ -13,7 +13,7 @@ export const ContactItem = ({ name, number, id }) => {
     return (
         <Item key={id}>
         <Text>{name} : {number}</Text>
-         <Button type="button" onClick={handleDeleteContact}>Delete</Button>
+         <Button type="button" onClick={handleDeleteContact}>Delete 🗑️</Button>
          </Item>)
            
 }

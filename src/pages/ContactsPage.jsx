@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Contacts } from 'components/Contacts/Contacts';
 import { getIsLoading } from 'redux/contacts/selector';
 import { fetchContacts } from 'api/contactsAPI';
+import { Filter } from 'components/Filter/Filter';
 import Form from 'components/Form/Form';
 
 export default function ContactsPage() {
@@ -11,16 +12,19 @@ export default function ContactsPage() {
   const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    fetchContacts().then(data => {
+    dispatch(data)
+  })
   }, [dispatch]);
 
   return (
     <>
+      <Form />
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      <Form />
       <div>{isLoading && 'Request in progress...'}</div>
+      <Filter/>
       <Contacts />
     </>
   );

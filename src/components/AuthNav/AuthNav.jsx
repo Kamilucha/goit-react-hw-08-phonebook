@@ -1,15 +1,24 @@
 import { NavLink } from 'react-router-dom';
-// import css from './AuthNav.module.css';
+import styled from '@emotion/styled';
+
 
 export const AuthNav = () => {
+   const StyledLink = styled(NavLink)`
+  color: white;
+margin-right: 20px;
+
+  &.active {
+    color: orange;   
+  }
+`;  
   return (
     <div>
-      <NavLink  to="/register">
-        Register
-      </NavLink>
-      <NavLink  to="/login">
+      <StyledLink  to="/register">
+        Sign Up
+      </StyledLink>
+      <StyledLink  to="/login">
         Log In
-      </NavLink>
+      </StyledLink>
     </div>
   );
 };

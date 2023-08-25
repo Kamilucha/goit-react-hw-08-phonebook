@@ -1,19 +1,30 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
+import styled from '@emotion/styled';
 // import css from './Navigation.module.css';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
+   const StyledLink = styled(NavLink)`
+  color: white;
+
+  &.active {
+    color: orange;   
+  }
+`; 
 
   return (
     <nav>
-      <NavLink  to="/">
+      {!isLoggedIn && (
+       <StyledLink  to="/">
         Home
-      </NavLink>
+      </StyledLink>
+      )}
+      
       {isLoggedIn && (
-        <NavLink  to="/tasks">
-          Tasks
-        </NavLink>
+        <StyledLink  to="/contacts">
+          Contacts
+        </StyledLink>
       )}
     </nav>
   );
