@@ -50,7 +50,6 @@ const Form = () => {
 
 
         dispatch(addContactsThunk(newContact));
-        console.log(newContact)
 
         reset()
     };
