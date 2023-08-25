@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://64d3734c67b2662bf3dc400b.mockapi.io/api/v1';
+const URL = 'https://connections-api.herokuapp.com';
 
 export const fetchContacts = async () => {
   const { data } = await axios.get(`${URL}/contacts`);
@@ -8,14 +8,23 @@ export const fetchContacts = async () => {
   return data;
 };
 
-export const addContact = async ({ name, number: phone }) => {
-  const { data } = await axios.post(`${URL}/contacts`, { name, phone });
+export const addContact = async ({ name, number}) => {
+  const { data } = await axios.post(`${URL}/contacts`, { name, number});
 
   return data;
 };
 
 export const deleteContact = async id => {
   const { data } = await axios.delete(`${URL}/contacts/${id}`);
+
+  return data;
+};
+
+export const updateContact = async ({ id, name, number }) => {
+  const { data } = await axios.patch(`${URL}/contacts/${id}`, {
+    name,
+    number,
+  });
 
   return data;
 };

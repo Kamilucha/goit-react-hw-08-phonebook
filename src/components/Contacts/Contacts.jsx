@@ -17,7 +17,7 @@ export const Contacts = () => {
   const visibleContacts = getVisibleContacts(contacts, filter);
 
     return (<List>
-        {visibleContacts.map(({ id, name, phone: number }) => (
+        {visibleContacts.map(({ id, name, number }) => (
             <ContactItem key={id}
                 id={id}
                 name={name}

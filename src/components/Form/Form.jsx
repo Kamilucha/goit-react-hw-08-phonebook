@@ -36,7 +36,7 @@ const Form = () => {
         const duplicate = contacts.some(
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.phone === number
+        contact.number === number
     );
 
     if (duplicate) {
