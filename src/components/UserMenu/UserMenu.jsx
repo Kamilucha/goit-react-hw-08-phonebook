@@ -3,7 +3,6 @@ import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import { UserContainer, UserName, LogOut } from './UserMenu.styled';
 
-// import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();

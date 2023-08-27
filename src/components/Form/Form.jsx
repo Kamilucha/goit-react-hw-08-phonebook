@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/selector';
 import { addContactsThunk } from 'redux/thunk';
 import { Input, Label, FormContainer, Button } from "./Form.styled"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Form = () => {
@@ -32,15 +34,38 @@ const Form = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        const duplicate = contacts.some(
-      contact =>
-        contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number === number
-    );
+         const duplicateName = contacts.some(
+    contact => contact.name.toLowerCase() === name.toLowerCase()
+  );
+  const duplicateNumber = contacts.some(
+    contact => contact.number === number
+  );
 
-    if (duplicate) {
-        return alert (`${name} is already in contacts`);
-    }
+  if (duplicateName) {
+    toast.error(`Name ${name} is already in contacts`, {
+      position: "top-center",
+      autoClose: 3000,
+    });
+    return;
+  }
+
+  if (duplicateNumber) {
+    toast.error(`Number ${number} is already in contacts`, {
+      position: "top-center",
+      autoClose: 3000,
+    });
+    return;
+  }
+
+    //     const duplicate = contacts.some(
+    //   contact =>
+    //     contact.name.toLowerCase() === name.toLowerCase() ||
+    //     contact.number === number
+    // );
+
+    // if (duplicate) {
+    //     return alert (`${name} is already in contacts`);
+    // }
   
 
         const newContact = {
@@ -86,6 +111,7 @@ const Form = () => {
                 onChange={handleChange}/>
                 </Label>
             <Button type="submit">Add contact</Button>
+            <ToastContainer />
      </FormContainer>
 ) 
 }

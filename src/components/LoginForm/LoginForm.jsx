@@ -1,9 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { Input, Label, FormContainer, Button } from 'components/Form/Form.styled';
+import { useState } from 'react';
 
 
 export const LoginForm = () => {
+  const [loginError, setLoginError] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -15,9 +17,13 @@ export const LoginForm = () => {
         password: form.elements.password.value,
     })
     );
+
+     if (form.elements.email.value !== 'correct@email.com' || form.elements.password.value !== 'correctpassword') {
+      setLoginError(true); 
+      return;
+    }
   
       console.log(form.elements.email.value)
-    form.reset();
   };
 
   return (
@@ -31,6 +37,7 @@ export const LoginForm = () => {
         <Input type="password" name="password" />
       </Label>
       <Button type="submit">Log In</Button>
+      {loginError && <p style={{ color: 'red' }}>Wrong login or password</p>}
     </FormContainer>
   );
 };

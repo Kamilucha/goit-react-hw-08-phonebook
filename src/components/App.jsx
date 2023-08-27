@@ -7,8 +7,8 @@ import { PublicRoute } from './PublicRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from './Loader/Loader';
+import { Navigate } from "react-router-dom";
 
-// import { Home } from '../pages/Home'
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -47,55 +47,8 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-      </Route>
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
-
-
-
-
-
-
-// import  Form  from './Form/Form'
-// import { Contacts } from './Contacts/Contacts'
-// import { Section } from './Section/Section'
-// import { Filter } from './Filter/Filter'
-// import { Container } from './App.styled';
-// import { useEffect } from 'react';
-// import { getError, getIsLoading } from 'redux/contacts/selector';
-// import { getContactsThunk } from 'redux/thunk';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { Loader } from './Loader/Loader';
-
-
-
-
-// const App = () => {
-
-//   const dispatch = useDispatch();
-//   const isLoading = useSelector(getIsLoading);
-//   const error = useSelector(getError);
-
-//   useEffect(() => {
-//     dispatch(getContactsThunk());
-//   }, [dispatch]);
-
-
-//       return <Container>
-//       <Section title='Phonebook'>
-//           <Form/>
-//       </Section>
-//           <Section title='Contacts'>
-//             <Filter />
-//         <Contacts />
-//     {isLoading && !error && <Loader />}
-//       </Section>
-//     </Container>
-  
-// }
-
-// export default App
-
-
-
